@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gasto de combustivel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: darkcyan;
+                margin: 0;
+                padding: 0;
+                font-family: "Merienda", cursive;
+            }
+
+            h1 {
+                color: white;
+                text-align: center;
+                margin: 5vh 2vw 2vh 2vw;
+                font-size: 4vh;
+            }
+
+            .dados {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0 2vw;
+            }
+
+            .inputs {
+                display: flex;
+                flex-direction: column;
+                border: solid 1px black;
+                background-color: white;
+                border-radius: 15px;
+                padding: 2vh 4vw;
+                width: 100%;
+                max-width: 400px;
+                gap: 1.5vh;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            label {
+                font-size: 1rem;
+                margin-bottom: 0.5vh;
+            }
+
+            input,
+            select {
+                border-radius: 10px;
+                border: solid 2px black;
+                padding: 5px;
+                font-size: 1rem;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .btns {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            button {
+                font-family: "Merienda", cursive;
+                border-radius: 10px;
+                border: solid 1px black;
+                padding: 10px;
+                font-size: 1rem;
+                cursor: pointer;
+                flex: 1;
+            }
+
+            .resultado {
+                color: white;
+                text-align: center;
+                margin: 8vh 2vw 0;
+                font-size: 1.2rem;
+            }
+
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 3.5vh;
+                }
+
+                .inputs {
+                    padding: 2vh 5vw;
+                }
+
+                button {
+                    font-size: 0.9rem;
+                    padding: 8px;
+                }
+
+                .resultado {
+                    font-size: 1rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                h1 {
+                    font-size: 3vh;
+                }
+
+                .inputs {
+                    padding: 2vh 3vw;
+                }
+
+                button {
+                    font-size: 0.8rem;
+                    padding: 6px;
+                }
+
+                .resultado {
+                    font-size: 0.9rem;
+                }
+            }
+        </style>
+</head>
+
+<body>
+
+    <div class="dados">
+        <h1>Calcule o valor que vai gastar com combustivel na sua viagem !</h1>
+        <div class="inputs">
+            <label for="distacia">Quantos Km você ira viajar: </label><input type="number" name="distancia"
+                id="distacia">
+            <label for="opcoes">Você esta usando: </label>
+            <select id="opcoes" name="opcoes">
+                <option value="opcao1">gasolina</option>
+                <option value="opcao2">alcool</option>
+            </select>
+            <label for="valor">Qual o valor do combustivel: </label><input type="number" name="combustivel"
+                id="combustivel">
+
+            <label for="consumo">Km por litros com o combutivel escolhido: </label><input type="number" name="consumo"
+                id="consumo">
+            <div class="btns">
+                <button type="submit" id="submit">Enviar</button>
+                <button type="reset" id="reset">Resetar</button>
+            </div>
+        </div>
+    </div>
+    <div class="resultado" id="resultado"></div>
+
+</body>
+<script>
+
+    const distanciaField = document.getElementById('distacia');
+    const opcoesField = document.getElementById('opcoes');
+    const combustivelField = document.getElementById('combustivel');
+    const consumoField = document.getElementById('consumo');
+    const submitBtn = document.getElementById('submit');
+    const resetBtn = document.getElementById('reset');
+    const resultadoDiv = document.getElementById('resultado');
+
+
+    submitBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const distancia = parseFloat(distanciaField.value);
+        const opcoes = opcoesField.value;
+        const combustivel = parseFloat(combustivelField.value);
+        const consumo = parseFloat(consumoField.value);
+
+        if (isNaN(distancia) || isNaN(consumo) || isNaN(combustivel)) {
+            resultadoDiv.textContent = 'Por favor, preencha todos os campos corretamente.';
+            return;
+        }
+
+        HowMuchTrip(distancia, consumo, combustivel, opcoes);
+    });
+
+    resetBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        resultadoDiv.textContent = '';
+    });
+
+    function HowMuchTrip(distancia, consumo, combustivel, opcoes) { 
+
+        let custo = 0;
+        switch (opcoes) {
+            case 'opcao1':
+                custo = (distancia / consumo) * combustivel;
+                resultadoDiv.textContent = `O valor gasto com combustivel na viagem é de R$ ${custo.toFixed(2)}`;
+                break;
+
+            case 'opcao2':
+                custo = (distancia / consumo) * combustivel;
+                resultadoDiv.textContent = `O valor gasto com combustivel na viagem é de R$ ${custo.toFixed(2)}`;
+                break;
+
+            default:
+                resultadoDiv.textContent = 'Opção inválida';
+                break;
+
+        }
+    }
+
+</script>
+
+</html>

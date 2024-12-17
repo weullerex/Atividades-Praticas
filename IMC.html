@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(0, 0, 0);
+            margin: 0;
+            padding: 0;
+            font-family: "Merienda", cursive;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin: 5vh 2vw 2vh 2vw;
+            font-size: 4vh;
+        }
+
+        .dados {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 2vw;
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            border: solid 1px black;
+            background-color: white;
+            border-radius: 15px;
+            padding: 2vh 4vw;
+            width: 100%;
+            max-width: 400px;
+            gap: 1.5vh;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 0.5vh;
+        }
+
+        input,
+        select {
+            border-radius: 10px;
+            border: solid 2px black;
+            padding: 5px;
+            font-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btns {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            font-family: "Merienda", cursive;
+            border-radius: 10px;
+            border: solid 1px black;
+            padding: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .resultado {
+            color: white;
+            text-align: center;
+            margin: 8vh 2vw 0;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5vh;
+            }
+
+            .inputs {
+                padding: 2vh 5vw;
+            }
+
+            button {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .resultado {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 3vh;
+            }
+
+            .inputs {
+                padding: 2vh 3vw;
+            }
+
+            button {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+
+            .resultado {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dados">
+        <h1>Calcule o seu IMC!</h1>
+
+
+
+        <div class="inputs">
+
+            <label for="opcoes">Você é: </label>
+            <select id="opcoes" name="opcoes">
+                <option value="opcao1">Homem</option>
+                <option value="opcao2">Mulher</option>
+            </select>
+
+            <label for="peso">Quantos Kg você pesa</label><input type="number" name="peso" id="peso">
+
+            <label for="altura">Qual a sua altura: </label><input type="number" name="altura"
+                id="altura">
+
+            <div class="btns">
+                <button type="submit" id="submitBtn">Enviar</button>
+                <button type="reset" id="resetBtn">Resetar</button>
+            </div>
+        </div>
+    </div>
+    <div class="resultado" id="resultadoDiv"></div>
+
+</body>
+<script src="../Praticas/IMC.js"></script>
+
+</html>

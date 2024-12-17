@@ -2,7 +2,7 @@ const opcoesField = document.getElementById('opcoes');
 const pesoField = document.getElementById('peso');
 const alturaField = document.getElementById('altura');
 const submit = document.getElementById('submitBtn');
-const reset = document.getElementById('resetBTn');
+const resetBtn = document.getElementById('resetBtn');
 const resultadoDiv = document.getElementById('resultadoDiv');
 let mensagem;
 
@@ -57,10 +57,15 @@ submit.addEventListener('click', (event) => {
 
 });
 
-reset.addEventListener('click', (event) => {
-    event.Default();
-    mensagem = ' ';
+resetBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    pesoField.value = '';
+    alturaField.value = '';
+    opcoesField.value = '';
+
+    mensagem = '';
+
     resultadoDiv.textContent = mensagem;
-   
 
 });
